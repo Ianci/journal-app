@@ -1,0 +1,13 @@
+.nothing__main-content{
+    align-items: center;
+    background-color: $primary;
+    color: white;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    display: flex;
+    p{
+        font-weight: bold;
+        line-height: 1.4444;
+    }
+}
