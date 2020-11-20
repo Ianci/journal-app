@@ -10,5 +10,37 @@
     display: flex;
     justify-content: space-between;
     padding: 10px 20px 10px 20px;
-
+}
+.notes__content{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 20px;
+}
+.notes__title-input, .notes__textarea {
+    outline: none;
+    border: none;
+    &:focus{
+        outline: none;
+    }
+}
+.notes__title-input{
+    color: $dark-grey;
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 10px;
+   
+    border-bottom: 1px solid $dark-grey;
+}
+.notes__textarea{
+    resize: none;
+    border: 1px solid $dark-grey;
+    font-size: 1.3rem;
+    flex: 1 1 auto;
+}
+.notes__image {
+    img{
+        box-shadow: 5px 5px $dark-grey;
+        margin-top: 5px;
+    }
 }
