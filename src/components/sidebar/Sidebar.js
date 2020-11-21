@@ -4,20 +4,24 @@ import { FcCalendar } from 'react-icons/fc'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { startLogOut } from '../../actions/auth'
-import { JournalEntries } from '../journal/JournalEntries'
+import { JournalEntries } from '../todos/JournalEntries'
 
 export const Sidebar = () => {
     const dispatch = useDispatch()
     const history = useHistory()
 
-
+    //Logout function
     const logOutFunction = ()=>{
         dispatch(startLogOut())
         history.push('./auth/login')
     }
+    //Hook de redux para extraer el name y usarlo en la sidebar
     const reduxState = useSelector(state => state)
     const { auth: {name}} = reduxState
-    console.log(name)
+   //Function para crear nueva tarea
+   const createNewTodo = ()=> {
+       
+   }
     return (
         <div className="journal__sidebar">
             <div className="journal__sidebar-nav">
@@ -28,9 +32,9 @@ export const Sidebar = () => {
                 <button className="btn btn-sidebar-logout" onClick={logOutFunction}>Logout</button>
                 </div>
             </div>
-            <div className="journal__new-entry">
+            <div className="journal__new-entry" onClick={createNewTodo}>
                 <FcCalendar />
-                <p>New entry</p>
+                <p>New board</p>
             </div>
             <JournalEntries />
         </div>

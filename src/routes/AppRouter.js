@@ -4,7 +4,7 @@ import {
     Switch,
     Redirect,
   } from "react-router-dom";
-import { JournalScreen } from '../components/journal/JournalScreen';
+import { JournalScreen } from '../components/todos/TodoScreen';
 import { AuthRouter } from './AuthRouter';
 import { firebase } from '../firebase/config';
 import { useDispatch} from 'react-redux';
