@@ -1,6 +1,8 @@
 import { types } from "../types/types"
 import { faceAuthProvider, firebase, googleAuthProvider } from '../firebase/config'
-import { finishLoading, startLoading } from "./ui"
+import { finishLoading, setErrorAction, startLoading } from "./ui"
+import Swal from 'sweetalert2'
+
 
 export const startLogin = (email, password) => {
     return(dispatch) => {
@@ -12,7 +14,11 @@ export const startLogin = (email, password) => {
            dispatch(finishLoading())
        })
        .catch(error =>{
-           console.log(error)
+            dispatch(finishLoading())
+            Swal.fire(
+                'Error', error.message, 'error'
+            )
+           
        })
      
     }
@@ -44,14 +50,20 @@ export const startFacebookLogin = () => {
 
 export const registerWithEmail = (email, password, name) =>{
     return(dispatch)=>{
+        
         firebase.auth().createUserWithEmailAndPassword(email, password)
         .then( async({ user }) => {
             await user.updateProfile({ displayName: name});
             dispatch(
                 login(user.uid, user.displayName)
             )
+            
         }).catch(error =>{
-            console.log(error.message)
+            
+            
+            Swal.fire(
+                'Error', error.message, 'error'
+            )
         })
     }
 }

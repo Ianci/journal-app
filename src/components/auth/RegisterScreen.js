@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from '../../hooks/useForm'
 import { useDispatch, useSelector } from 'react-redux'
@@ -11,9 +11,8 @@ export const RegisterScreen = () => {
     const dispatch = useDispatch();
     //State de la app
     const stateRedu = useSelector(stateRedux => stateRedux);
-   
     const { ui } = stateRedu
-    const { msgError } = ui
+    const { msgError, loading } = ui
     
     //Custom hook para leer los inputs del usuario
     const { state , handleChange } = useForm({name: "", email: "", password: "", repeat: ""})
@@ -67,7 +66,7 @@ export const RegisterScreen = () => {
                 
                 <button type="submit" 
                 className="btn btn-secondary"
-                
+                disabled={loading}
                 >
                     Crear cuenta</button>
                 <hr />

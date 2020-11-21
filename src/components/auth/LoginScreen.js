@@ -56,8 +56,8 @@ export const LoginScreen = () => {
             { msgError && <p className="auth__p-error">{msgError}</p>}
             </div>
             <form onSubmit={handleSubmit}>
-                <input onChange={handleChange} autocomplete="off" className="auth__input" type="text" placeholder="Email" name="email" value={email}/>
-                <input onChange={handleChange} autocomplete="off" className="auth__input" type="password" placeholder="Password" name="password" value={password}/>
+                <input onChange={handleChange} autoComplete="off" className="auth__input" type="text" placeholder="Email" name="email" value={email}/>
+                <input onChange={handleChange} autoComplete="off" className="auth__input" type="password" placeholder="Password" name="password" value={password}/>
                 <button type="submit" 
                 className="btn btn-primary"
                 disabled={loading}
