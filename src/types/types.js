@@ -8,7 +8,10 @@ export const types = {
     uiStartLoading: 'START_LOADING',
     uiFinishLoading: 'FINISH_LOADING',
 
-    todoStartCreateTodo: 'START_CREATE_TODO',
-    todoCreatedSuccess: 'TODO_CREATED_SUCCESS',
-    todoFailed: 'TODO_FAILED_CREATION'
+    todoAddNew: 'TODO_ADD_NEW',
+    todoActive: 'TODO_ACTIVE',
+    todoLoaded: 'TODO_LOADED',
+    todoUpdated: 'TODO_UPDATED',
+    todoEliminated: 'TODO_ELIMINATED',
+    todoLogoutCleaning: 'CLEANED_USER_TODOS'
 }

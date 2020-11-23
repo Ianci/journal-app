@@ -12,6 +12,7 @@ import { login } from '../actions/auth';
 import { LoadingScreen } from '../components/loadingscreen/LoadingScreen';
 import { PublicRoute} from '../routes/PublicRoutes'
 import { PrivateRoute} from '../routes/PrivateRoutes'
+import { setTodos, startSetTodos } from '../actions/todo';
 export const AppRouter = () => {
   const [check, setCheck] = useState(true)
   const [isLoggedIn, setisLoggedIn] = useState(false);
@@ -21,6 +22,7 @@ export const AppRouter = () => {
     firebase.auth().onAuthStateChanged((user)=>{
       if(user?.uid){
        dispatch(login(user.uid, user.displayName))
+       dispatch( startSetTodos(user.uid) )
        setisLoggedIn(true);
       } else {
         setisLoggedIn(false);

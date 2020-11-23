@@ -4,6 +4,7 @@ import { FcCalendar } from 'react-icons/fc'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { startLogOut } from '../../actions/auth'
+import { startNewTodo } from '../../actions/todo'
 import { JournalEntries } from '../todos/JournalEntries'
 
 export const Sidebar = () => {
@@ -18,9 +19,10 @@ export const Sidebar = () => {
     //Hook de redux para extraer el name y usarlo en la sidebar
     const reduxState = useSelector(state => state)
     const { auth: {name}} = reduxState
+
    //Function para crear nueva tarea
    const createNewTodo = ()=> {
-       
+       dispatch(startNewTodo())
    }
     return (
         <div className="journal__sidebar">
