@@ -1,21 +1,31 @@
 import React from 'react'
+import moment from 'moment'
+import { activeTodo } from '../../actions/todo'
+import { useDispatch} from 'react-redux'
 
-export const JournalEntry = () => {
+export const JournalEntry = ({id, date, body, title}) => {
+    const todoDate = moment(date)
+    const dispatch = useDispatch()
+
+    const handleTodoActive = () =>{
+        dispatch(activeTodo (id,{
+            date,
+            body,
+            title
+        }))
+    }
     return (
-        <div className="journal__entry">
-            <div className="journal__entry-picture"
-            style={{backgroundSize: "cover", backgroundPosition: "center", backgroundImage: "url('https://rosolutions.com.mx/blog/wp-content/uploads/2019/06/1-y6C4nSvy2Woe0m7bWEn4BA.png')"}}>
-
-            </div>
+        <div className="journal__entry" onClick={handleTodoActive}>
+            
             <div className="journal__entry-body">
-                <p className="journal__entry-title">Wtf</p>
+                <p className="journal__entry-title">{title}</p>
                 <p className="journal__entry-content">
-                    This is the content of our journals
+                   {body}
                 </p>
             </div>
             <div className="journal__entry-date">
-                <span>Monday</span>
-                <span>4</span>
+                <span>{todoDate.format("MMM Do YY")}</span>
+               
             </div>
         </div>
     )

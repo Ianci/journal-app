@@ -39,3 +39,19 @@ export const setTodos = (todos) => {
         payload: todos
     }
 }
+
+export const startSaveTodo = (todo) =>{
+    return async(dispatch, getState) => {
+        const uid = getState().auth.uid
+        const todoFirestore = {...todo};
+        delete todoFirestore.id;
+
+        await db.doc(`${uid}/todos/usertodos/${todo.id}`).update( todoFirestore )
+    }
+}
+
+export const startUploading = ( file ) => {
+    return (dispatch, getState) => {
+        const {} =getState().todos
+    }
+}
